@@ -1,0 +1,5 @@
+# Dependencias del servidor Python (captura y estáticos).
+# La inferencia de manos corre en el navegador con MediaPipe Tasks Vision;
+# no se instala MediaPipe nativo en la UNO Q (el CPU no soporta LSE).
+numpy==2.2.6
+opencv-contrib-python-headless==4.12.0.88

@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pylibs/
+.pipboot/
+.venv/
+venv/
+
+# Logs y temporales
+*.log
+*.pid
+*.tmp
+.DS_Store
+
+# Datos locales
+data/
+recordings/
+snapshots/
+camera.env
+.env
+
+# El modelo y los assets del navegador SÍ se versionan:
+# static/models/hand_landmarker.task
+# static/mediapipe/

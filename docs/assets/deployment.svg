@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860" role="img" aria-labelledby="ttl dsc">
+  <title id="ttl">Despliegue físico de GestureCube</title>
+  <desc id="dsc">Cámara USB conectada a un hub USB-C con Power Delivery, Arduino UNO Q con el servicio systemd en el puerto 8091, router de la LAN y navegador del visitante. Se indican las limitaciones del único puerto USB-C y la alternativa de cámara IP.</desc>
+
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#0e1a2b" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="halo" cx="50%" cy="0%" r="75%">
+      <stop offset="0" stop-color="#00d4ff" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#00d4ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="board" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1a26"/>
+      <stop offset="1" stop-color="#071019"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1726"/>
+      <stop offset="1" stop-color="#0a121e"/>
+    </linearGradient>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#00d4ff"/>
+    </marker>
+    <marker id="arwPink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#ff4fd8"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="860" fill="#05070d"/>
+  <rect width="1440" height="860" fill="url(#grid)" opacity="0.55"/>
+  <ellipse cx="720" cy="0" rx="700" ry="320" fill="url(#halo)"/>
+
+  <!-- Encabezado -->
+  <g font-family="Inter, Segoe UI, system-ui, sans-serif">
+    <text x="64" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#00d4ff" letter-spacing="3.2">GESTURECUBE · DESPLIEGUE</text>
+    <text x="64" y="100" font-size="34" font-weight="700" fill="#eaf6ff">Una placa, una cámara y <tspan fill="#00d4ff">un navegador</tspan></text>
+    <text x="64" y="128" font-size="14" fill="#7f96ad">La UNO Q captura y sirve el video por la LAN; el visitante abre la página y la inferencia corre en su equipo</text>
+  </g>
+
+  <!-- Cámara -->
+  <rect x="48" y="250" width="180" height="160" rx="16" fill="url(#card)" stroke="#1c3a4d"/>
+  <g>
+    <rect x="78" y="282" width="86" height="58" rx="8" fill="#0e1a27" stroke="#00d4ff" stroke-opacity="0.7"/>
+    <rect x="98" y="272" width="26" height="12" rx="4" fill="#0e1a27" stroke="#00d4ff" stroke-opacity="0.6"/>
+    <circle cx="140" cy="311" r="16" fill="#050b12" stroke="#00d4ff" stroke-opacity="0.8"/>
+    <circle cx="140" cy="311" r="7" fill="#00d4ff" opacity="0.55"/>
+    <circle cx="152" cy="293" r="2.5" fill="#b8ff4f"/>
+  </g>
+  <text x="138" y="378" text-anchor="middle" font-size="16" font-weight="600" fill="#eaf6ff">Cámara USB</text>
+  <text x="138" y="398" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#7f96ad">UVC · 640×480</text>
+
+  <!-- Hub -->
+  <rect x="288" y="230" width="200" height="200" rx="16" fill="url(#card)" stroke="#5a4416"/>
+  <text x="388" y="270" text-anchor="middle" font-size="16" font-weight="600" fill="#ffc247">Hub USB-C</text>
+  <text x="388" y="290" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#9b7d3a">con Power Delivery</text>
+  <rect x="300" y="316" width="28" height="15" rx="3" fill="#0a0f18" stroke="#ffc247" stroke-opacity="0.7"/>
+  <rect x="448" y="316" width="28" height="15" rx="3" fill="#0a0f18" stroke="#ffc247" stroke-opacity="0.7"/>
+  <text x="314" y="352" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#7f96ad">USB-A</text>
+  <text x="462" y="352" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#7f96ad">USB-C</text>
+  <text x="388" y="392" text-anchor="middle" font-size="11" fill="#6b8299">alimenta y hostea</text>
+  <text x="388" y="410" text-anchor="middle" font-size="11" fill="#6b8299">los periféricos</text>
+
+  <!-- UNO Q -->
+  <rect x="568" y="170" width="420" height="360" rx="18" fill="url(#board)" stroke="#00d4ff" stroke-opacity="0.45"/>
+  <g fill="none" stroke="#2a4a5c" stroke-width="1.2">
+    <circle cx="590" cy="192" r="4"/>
+    <circle cx="966" cy="192" r="4"/>
+    <circle cx="590" cy="508" r="4"/>
+    <circle cx="966" cy="508" r="4"/>
+  </g>
+  <text x="778" y="214" text-anchor="middle" font-size="22" font-weight="700" fill="#eaf6ff">Arduino UNO Q</text>
+  <text x="778" y="238" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#6b8299">Linux Debian 13 · Qualcomm QRB2210</text>
+
+  <rect x="598" y="258" width="360" height="104" rx="12" fill="#0b1a27" stroke="#1c4a5e"/>
+  <rect x="598" y="270" width="3" height="80" rx="1.5" fill="#00d4ff"/>
+  <text x="618" y="284" font-size="14" font-weight="600" fill="#eaf6ff">servicio gesturecube</text>
+  <text x="618" y="308" font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#7f96ad">systemd · Restart=always · arranque automático</text>
+  <text x="618" y="328" font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#7f96ad">0.0.0.0:8091 · usuario arduino · grupo video</text>
+  <text x="618" y="348" font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#7f96ad">scripts/run-service.sh · PYTHONPATH=.pylibs</text>
+
+  <rect x="598" y="382" width="360" height="76" rx="12" fill="#0b1a27" stroke="#1c3a4d"/>
+  <text x="618" y="408" font-size="14" font-weight="600" fill="#eaf6ff">captura → JPEG → MJPEG</text>
+  <text x="618" y="432" font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#7f96ad">OpenCV / V4L2 · sin inferencia en la placa</text>
+
+  <text x="778" y="496" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#4d6178">MCU STM32U585: no participa en este proyecto</text>
+
+  <!-- Router -->
+  <rect x="1052" y="250" width="160" height="140" rx="16" fill="url(#card)" stroke="#2d4a1c"/>
+  <g stroke="#b8ff4f" stroke-width="2" stroke-linecap="round" opacity="0.7">
+    <path d="M1080 250 V232"/>
+    <path d="M1100 250 V236"/>
+  </g>
+  <circle cx="1080" cy="230" r="3" fill="#b8ff4f"/>
+  <circle cx="1100" cy="234" r="3" fill="#b8ff4f"/>
+  <text x="1132" y="292" text-anchor="middle" font-size="15" font-weight="600" fill="#b8ff4f">Router / LAN</text>
+  <text x="1132" y="314" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#7f96ad">WiFi o Ethernet</text>
+  <text x="1132" y="344" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#4d6178">192.168.10.1</text>
+  <text x="1132" y="362" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#4d6178">red de la demo</text>
+
+  <!-- Navegador -->
+  <rect x="1052" y="450" width="330" height="160" rx="16" fill="url(#card)" stroke="#3a1e3f"/>
+  <rect x="1078" y="476" width="94" height="64" rx="6" fill="#0a0f18" stroke="#ff4fd8" stroke-opacity="0.7"/>
+  <path d="M1125 540 V552 M1108 552 H1142" stroke="#ff4fd8" stroke-opacity="0.6" stroke-width="2"/>
+  <g stroke="#ff4fd8" stroke-width="1.4" fill="none" opacity="0.85">
+    <path d="M1125 490 L1140 498 V518 L1125 526 L1110 518 V498 Z"/>
+    <path d="M1125 490 V526 M1110 498 L1125 506 L1140 498"/>
+  </g>
+  <text x="1190" y="490" font-size="15" font-weight="600" fill="#eaf6ff">PC o teléfono</text>
+  <text x="1190" y="512" font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#7f96ad">Chrome / Edge · WebGL</text>
+  <text x="1190" y="532" font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#7f96ad">abre http://IP:8091</text>
+  <text x="1190" y="556" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#4d6178">sin instalar nada</text>
+  <text x="1190" y="578" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#4d6178">la inferencia corre acá</text>
+
+  <!-- Conexiones -->
+  <path d="M228 330 H288" stroke="#00d4ff" stroke-width="2" opacity="0.8"/>
+  <circle cx="228" cy="330" r="3" fill="#00d4ff"/>
+  <circle cx="288" cy="330" r="3" fill="#00d4ff"/>
+  <text x="258" y="318" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#7f96ad">USB-A</text>
+
+  <path d="M488 330 H568" stroke="#ffc247" stroke-width="2" opacity="0.85"/>
+  <circle cx="488" cy="330" r="3" fill="#ffc247"/>
+  <circle cx="568" cy="330" r="3" fill="#ffc247"/>
+  <text x="528" y="318" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#ffc247">USB-C · PD</text>
+
+  <path d="M988 300 H1052" stroke="#b8ff4f" stroke-width="2" opacity="0.8"/>
+  <circle cx="988" cy="300" r="3" fill="#b8ff4f"/>
+  <circle cx="1052" cy="300" r="3" fill="#b8ff4f"/>
+  <text x="1020" y="288" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#b8ff4f">LAN</text>
+
+  <path d="M1132 390 V438" stroke="#00d4ff" stroke-width="2" opacity="0.8" marker-end="url(#arw)"/>
+  <text x="1142" y="420" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#00d4ff">HTTP :8091</text>
+  <text x="1142" y="434" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#4d7f92">MJPEG + API</text>
+
+  <!-- Tarjetas inferiores -->
+  <g font-family="Inter, Segoe UI, system-ui, sans-serif">
+    <rect x="48" y="620" width="430" height="190" rx="16" fill="url(#card)" stroke="#16283d"/>
+    <text x="72" y="654" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#00d4ff" letter-spacing="1.8">ARRANQUE Y SERVICIO</text>
+    <g font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <text x="72" y="686" fill="#8fb3c7">sudo ./scripts/install-service.sh</text>
+      <text x="72" y="712" fill="#7f96ad">systemctl status gesturecube</text>
+      <text x="72" y="738" fill="#7f96ad">journalctl -u gesturecube -f</text>
+      <text x="72" y="764" fill="#7f96ad">./scripts/status.sh</text>
+    </g>
+    <text x="72" y="792" font-size="11" fill="#4d6178">instala la unidad, hace daemon-reload y deja el servicio activo</text>
+
+    <rect x="500" y="620" width="430" height="190" rx="16" fill="url(#card)" stroke="#16283d"/>
+    <text x="524" y="654" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#00d4ff" letter-spacing="1.8">ACCESO DESDE LA LAN</text>
+    <g font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <text x="524" y="686" fill="#8fb3c7">http://192.168.10.75:8091/</text>
+      <text x="524" y="712" fill="#7f96ad">http://192.168.10.1:8091/</text>
+      <text x="524" y="738" fill="#7f96ad">curl http://IP:8091/healthz</text>
+    </g>
+    <text x="524" y="768" font-size="11" fill="#4d6178">la primera es la IP directa de la placa; la segunda,</text>
+    <text x="524" y="786" font-size="11" fill="#4d6178">el reenvío del router de la demo</text>
+    <text x="524" y="804" font-size="10.5" fill="#4d6178">sin autenticación · solo red de confianza</text>
+
+    <rect x="962" y="620" width="430" height="190" rx="16" fill="#140f08" stroke="#5a4416"/>
+    <text x="986" y="654" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#ffc247" letter-spacing="1.4">EL PUERTO USB-C ES ÚNICO</text>
+    <g font-size="12" fill="#b39a63">
+      <text x="986" y="682">El cable de datos a la PC (ADB) y la cámara</text>
+      <text x="986" y="702">no pueden compartir el mismo puerto.</text>
+      <text x="986" y="728" fill="#ffc247">→ hub USB-C con alimentación externa (PD)</text>
+      <text x="986" y="748" fill="#ffc247">→ o cámara IP MJPEG</text>
+    </g>
+    <text x="986" y="774" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#8a7440">GESTURECUBE_CAMERA=http://IP:8080/video</text>
+    <text x="986" y="796" font-size="10.5" fill="#7a6535">reiniciar el servicio después del cambio</text>
+  </g>
+
+  <text x="720" y="842" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#4d6178">La UNO Q no necesita GPU ni NPU: el modelo y el WASM se ejecutan en el cliente</text>
+</svg>

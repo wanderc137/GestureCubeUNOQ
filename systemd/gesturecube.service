@@ -1,0 +1,21 @@
+[Unit]
+Description=GestureCube UNO Q - camara USB + cubo 3D
+Documentation=file:///home/arduino/GestureCubeUNOQ/README.md
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=arduino
+Group=arduino
+SupplementaryGroups=video
+WorkingDirectory=/home/arduino/GestureCubeUNOQ
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/home/arduino/GestureCubeUNOQ/.pylibs
+ExecStart=/bin/bash /home/arduino/GestureCubeUNOQ/scripts/run-service.sh
+Restart=always
+RestartSec=5
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

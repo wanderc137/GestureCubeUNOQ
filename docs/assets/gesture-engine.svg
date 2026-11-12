@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-labelledby="ttl dsc">
+  <title id="ttl">Motor de gestos de GestureCube</title>
+  <desc id="dsc">De 21 landmarks a acciones: centro de la palma, conteo de dedos, clasificación puño/palma, barrido horizontal y traducción a rotate_left, rotate_right, spin_start y spin_stop.</desc>
+
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#0e1a2b" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="halo" cx="50%" cy="0%" r="75%">
+      <stop offset="0" stop-color="#ff4fd8" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ff4fd8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1726"/>
+      <stop offset="1" stop-color="#0a121e"/>
+    </linearGradient>
+    <linearGradient id="handCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#140c1b"/>
+      <stop offset="1" stop-color="#080b13"/>
+    </linearGradient>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#00d4ff"/>
+    </marker>
+    <marker id="arwPink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#ff4fd8"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="1000" fill="#05070d"/>
+  <rect width="1440" height="1000" fill="url(#grid)" opacity="0.55"/>
+  <ellipse cx="720" cy="0" rx="700" ry="360" fill="url(#halo)"/>
+
+  <!-- Encabezado -->
+  <g font-family="Inter, Segoe UI, system-ui, sans-serif">
+    <text x="64" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#ff4fd8" letter-spacing="3.2">GESTURECUBE · MOTOR DE GESTOS</text>
+    <text x="64" y="100" font-size="34" font-weight="700" fill="#eaf6ff">De 21 puntos en la mano a <tspan fill="#ff4fd8">una acción concreta</tspan></text>
+    <text x="64" y="128" font-size="14" fill="#7f96ad">Reglas geométricas simples, sin red neuronal extra: la misma lógica corre en JavaScript (navegador) y en Python (respaldo nativo)</text>
+  </g>
+
+  <!-- Tarjeta de entrada -->
+  <rect x="48" y="150" width="380" height="810" rx="20" fill="url(#handCard)" stroke="#3a1e3f"/>
+  <path d="M76 158 H250" stroke="#ff4fd8" stroke-width="2" opacity="0.55"/>
+  <text x="80" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#ff4fd8" letter-spacing="2.2">ENTRADA · 21 LANDMARKS</text>
+  <text x="80" y="214" font-size="12" fill="#8b7a91">una mano · coordenadas normalizadas</text>
+
+  <!-- Mano esquemática -->
+  <g>
+    <!-- palma -->
+    <path d="M238 742 L210 624 L244 616 L278 626 L310 646 Z" fill="#00d4ff" opacity="0.06"/>
+    <!-- conexiones -->
+    <g stroke="#2a5a72" stroke-width="2" stroke-linecap="round">
+      <path d="M238 742 L196 700 L166 662 L148 628 L138 594"/>
+      <path d="M238 742 L210 624 L204 552 L200 498 L198 454"/>
+      <path d="M210 624 L244 616 L244 538 L244 480 L244 432"/>
+      <path d="M244 616 L278 626 L284 552 L287 498 L290 454"/>
+      <path d="M278 626 L310 646 L320 588 L325 548 L328 514"/>
+      <path d="M238 742 L310 646"/>
+    </g>
+    <!-- puntos base -->
+    <g fill="#05070d" stroke="#00d4ff" stroke-width="1.6">
+      <circle cx="238" cy="742" r="5"/>
+      <circle cx="196" cy="700" r="4.5"/>
+      <circle cx="166" cy="662" r="4.5"/>
+      <circle cx="148" cy="628" r="4.5"/>
+      <circle cx="138" cy="594" r="4.5"/>
+      <circle cx="210" cy="624" r="4.5"/>
+      <circle cx="244" cy="616" r="4.5"/>
+      <circle cx="278" cy="626" r="4.5"/>
+      <circle cx="310" cy="646" r="4.5"/>
+    </g>
+    <!-- pips -->
+    <g fill="#0b1522" stroke="#7f96ad" stroke-width="1.5">
+      <circle cx="204" cy="552" r="4"/>
+      <circle cx="244" cy="538" r="4"/>
+      <circle cx="284" cy="552" r="4"/>
+      <circle cx="320" cy="588" r="4"/>
+    </g>
+    <!-- tips -->
+    <g fill="#ffc247" stroke="#ffc247" stroke-width="1">
+      <circle cx="198" cy="454" r="5.5"/>
+      <circle cx="244" cy="432" r="5.5"/>
+      <circle cx="290" cy="454" r="5.5"/>
+      <circle cx="328" cy="514" r="5.5"/>
+    </g>
+    <!-- rótulos -->
+    <g font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#ffc247">
+      <text x="180" y="446" text-anchor="end">8</text>
+      <text x="236" y="422" text-anchor="end">12</text>
+      <text x="298" y="446">16</text>
+      <text x="338" y="512">20</text>
+    </g>
+    <g font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#7f96ad">
+      <text x="194" y="548" text-anchor="end">6</text>
+      <text x="238" y="534" text-anchor="end">10</text>
+      <text x="292" y="548">14</text>
+      <text x="329" y="584">18</text>
+    </g>
+    <text x="248" y="762" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#00d4ff">0 · muñeca</text>
+    <!-- centro de palma -->
+    <circle cx="255" cy="650" r="34" fill="none" stroke="#00d4ff" stroke-width="1.2" stroke-dasharray="4 5" opacity="0.8"/>
+    <circle cx="255" cy="650" r="3.5" fill="#00d4ff"/>
+    <text x="255" y="686" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#00d4ff">palma</text>
+  </g>
+
+  <path d="M80 792 H396" stroke="#2b2036" stroke-width="1"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="80" y="820" font-size="12" fill="#ffc247">palma = media(0, 5, 9, 13, 17)</text>
+    <text x="80" y="848" font-size="11" fill="#00d4ff">tips (punta): 8 · 12 · 16 · 20</text>
+    <text x="80" y="870" font-size="11" fill="#8fb3c7">pips (articulación): 6 · 10 · 14 · 18</text>
+    <text x="80" y="900" font-size="11" fill="#4d6178">x, y ∈ [0,1] · z relativo a la muñeca</text>
+    <text x="80" y="924" font-size="11" fill="#4d6178">el pulgar (1–4) no se cuenta</text>
+  </g>
+
+  <!-- Paso 1 -->
+  <rect x="468" y="150" width="924" height="112" rx="14" fill="url(#card)" stroke="#16283d"/>
+  <circle cx="504" cy="190" r="16" fill="#07131a" stroke="#00d4ff"/>
+  <text x="504" y="195" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#00d4ff">1</text>
+  <text x="534" y="196" font-size="19" font-weight="600" fill="#eaf6ff">Centro de la palma</text>
+  <text x="534" y="224" font-size="13" fill="#7f96ad">promedia cinco puntos estables de la mano (muñeca y las cuatro bases de los dedos)</text>
+  <text x="534" y="246" font-size="13" fill="#7f96ad">esa coordenada es la referencia para medir el desplazamiento horizontal del barrido</text>
+
+  <path d="M930 262 V284" stroke="#00d4ff" stroke-width="1.6" opacity="0.75" marker-end="url(#arw)"/>
+
+  <!-- Paso 2 -->
+  <rect x="468" y="286" width="924" height="112" rx="14" fill="url(#card)" stroke="#16283d"/>
+  <circle cx="504" cy="326" r="16" fill="#07131a" stroke="#00d4ff"/>
+  <text x="504" y="331" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#00d4ff">2</text>
+  <text x="534" y="332" font-size="19" font-weight="600" fill="#eaf6ff">Cuenta los dedos extendidos</text>
+  <text x="534" y="360" font-size="13" fill="#7f96ad">para cada dedo compara la distancia muñeca→punta contra muñeca→articulación PIP</text>
+  <text x="534" y="382" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#ffc247">extendido si  |tip − muñeca| &gt; 1,15 × |pip − muñeca|</text>
+
+  <path d="M930 398 V420" stroke="#00d4ff" stroke-width="1.6" opacity="0.75" marker-end="url(#arw)"/>
+
+  <!-- Paso 3 -->
+  <rect x="468" y="422" width="924" height="124" rx="14" fill="url(#card)" stroke="#16283d"/>
+  <circle cx="504" cy="462" r="16" fill="#07131a" stroke="#00d4ff"/>
+  <text x="504" y="467" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#00d4ff">3</text>
+  <text x="534" y="468" font-size="19" font-weight="600" fill="#eaf6ff">Clasifica el gesto estático</text>
+  <text x="534" y="494" font-size="13" fill="#7f96ad">el resultado se confirma recién tras 4 frames consecutivos con la misma clase</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">
+    <rect x="534" y="508" width="168" height="26" rx="13" fill="#0a2630" stroke="#1f6675"/>
+    <text x="618" y="525" text-anchor="middle" fill="#00d4ff">≤ 1 dedo → PUÑO</text>
+    <rect x="714" y="508" width="176" height="26" rx="13" fill="#0b1522" stroke="#24374a"/>
+    <text x="802" y="525" text-anchor="middle" fill="#7f96ad">2 dedos → INDEFINIDO</text>
+    <rect x="902" y="508" width="168" height="26" rx="13" fill="#2a0f2a" stroke="#7a2b6c"/>
+    <text x="986" y="525" text-anchor="middle" fill="#ff4fd8">≥ 3 dedos → PALMA</text>
+  </g>
+
+  <path d="M930 546 V568" stroke="#00d4ff" stroke-width="1.6" opacity="0.75" marker-end="url(#arw)"/>
+
+  <!-- Paso 4 -->
+  <rect x="468" y="570" width="924" height="170" rx="14" fill="url(#card)" stroke="#16283d"/>
+  <circle cx="504" cy="610" r="16" fill="#07131a" stroke="#00d4ff"/>
+  <text x="504" y="615" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#00d4ff">4</text>
+  <text x="534" y="616" font-size="19" font-weight="600" fill="#eaf6ff">Detecta el barrido horizontal</text>
+  <text x="534" y="642" font-size="13" fill="#7f96ad">solo con la palma abierta · ventana de 0,45 s sobre el historial de la palma · se exigen las cuatro condiciones</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">
+    <rect x="534" y="658" width="196" height="30" rx="8" fill="#0b1522" stroke="#24374a"/>
+    <text x="632" y="678" text-anchor="middle" fill="#8fb3c7">|Δx| ≥ 0,17 del ancho</text>
+    <rect x="746" y="658" width="196" height="30" rx="8" fill="#0b1522" stroke="#24374a"/>
+    <text x="844" y="678" text-anchor="middle" fill="#8fb3c7">|Δx| &gt; 1,45 · |Δy|</text>
+    <rect x="958" y="658" width="196" height="30" rx="8" fill="#0b1522" stroke="#24374a"/>
+    <text x="1056" y="678" text-anchor="middle" fill="#8fb3c7">velocidad ≥ 0,32 / s</text>
+    <rect x="1170" y="658" width="190" height="30" rx="8" fill="#0b1522" stroke="#24374a"/>
+    <text x="1265" y="678" text-anchor="middle" fill="#8fb3c7">cooldown 0,9 s</text>
+  </g>
+  <text x="534" y="722" font-size="12" fill="#4d6178">si falla una sola condición, no hay evento: se evita girar el cubo con movimientos lentos o verticales</text>
+
+  <path d="M930 740 V762" stroke="#ff4fd8" stroke-width="1.6" opacity="0.8" marker-end="url(#arwPink)"/>
+
+  <!-- Paso 5 -->
+  <rect x="468" y="764" width="924" height="196" rx="14" fill="url(#card)" stroke="#ff4fd8" stroke-opacity="0.35"/>
+  <circle cx="504" cy="804" r="16" fill="#1a0b1a" stroke="#ff4fd8"/>
+  <text x="504" y="809" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#ff4fd8">5</text>
+  <text x="534" y="810" font-size="19" font-weight="600" fill="#eaf6ff">Traduce el gesto a una acción del cubo</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">
+    <text x="534" y="842" fill="#8fb3c7">swipe_left</text>
+    <text x="650" y="842" fill="#4d6178">mano derecha</text>
+    <text x="800" y="842" fill="#39536b">→</text>
+    <text x="822" y="842" fill="#00d4ff">rotate_left</text>
+
+    <text x="534" y="870" fill="#8fb3c7">swipe_left</text>
+    <text x="650" y="870" fill="#4d6178">mano izquierda</text>
+    <text x="800" y="870" fill="#39536b">→</text>
+    <text x="822" y="870" fill="#ff4fd8">rotate_right</text>
+
+    <text x="534" y="898" fill="#8fb3c7">swipe_right</text>
+    <text x="650" y="898" fill="#4d6178">mano derecha</text>
+    <text x="800" y="898" fill="#39536b">→</text>
+    <text x="822" y="898" fill="#ff4fd8">rotate_right</text>
+
+    <text x="534" y="926" fill="#8fb3c7">swipe_right</text>
+    <text x="650" y="926" fill="#4d6178">mano izquierda</text>
+    <text x="800" y="926" fill="#39536b">→</text>
+    <text x="822" y="926" fill="#00d4ff">rotate_left</text>
+  </g>
+  <text x="970" y="842" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#b8ff4f">puño derecho → spin_start</text>
+  <text x="970" y="870" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#ffc247">palma abierta → spin_stop</text>
+  <text x="970" y="898" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#4d6178">mano perdida &gt; 1,2 s</text>
+  <text x="970" y="926" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#4d6178">→ spin_stop automático</text>
+</svg>

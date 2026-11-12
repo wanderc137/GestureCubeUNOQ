@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05070d">
+  <title>GestureCube · UNO Q</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070b12'/%3E%3Cpath d='M32 10 52 21v22L32 54 12 43V21z' fill='%2300d4ff' opacity='.18'/%3E%3Cpath d='M32 10 52 21v22L32 54 12 43V21z' fill='none' stroke='%2300d4ff' stroke-width='2'/%3E%3Cpath d='M32 10v44M12 21l20 11 20-11M12 43l20-11 20 11' fill='none' stroke='%2300d4ff' stroke-width='2' opacity='.8'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" role="img">
+          <path d="M32 8 54 20v24L32 56 10 44V20z" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M32 8v48M10 20l22 12 22-12M10 44l22-12 22 12" fill="none" stroke="currentColor" stroke-width="2" opacity=".75"/>
+        </svg>
+      </div>
+      <div class="brand-copy">
+        <h1>GESTURE<span>CUBE</span></h1>
+        <p>UNO Q · visión artificial offline</p>
+      </div>
+    </div>
+
+    <div class="statusbar">
+      <div class="pill" id="pill-camera">
+        <i class="dot"></i>
+        <span>CÁMARA</span>
+        <b id="camera-pill-text">BUSCANDO</b>
+      </div>
+      <div class="pill" id="pill-model">
+        <i class="dot"></i>
+        <span>MODELO</span>
+        <b id="model-pill-text">CARGANDO</b>
+      </div>
+      <div class="pill" id="pill-fps">
+        <span>FPS</span>
+        <b id="fps-value">0.0</b>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel gestures-panel">
+      <div class="panel-head">
+        <span>GESTOS</span>
+        <small>manos frente a la cámara</small>
+      </div>
+
+      <article class="gesture-card" id="g-right-left" data-hand="Right" data-action="rotate_left">
+        <div class="gesture-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M38 10v20M30 12v18M22 16v16M46 18v14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M18 34c0-4 3-7 7-7h14c4 0 7 3 7 7v10c0 7-6 13-13 13h-2c-7 0-13-6-13-13z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M10 42H2m0 0 4-4m-4 4 4 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="gesture-copy">
+          <span class="gesture-kicker">MANO DERECHA</span>
+          <strong>Barrido <em>←</em></strong>
+          <p>De derecha a izquierda. Gira el cubo a la izquierda.</p>
+        </div>
+        <i class="state-dot"></i>
+      </article>
+
+      <article class="gesture-card" id="g-left-right" data-hand="Left" data-action="rotate_left">
+        <div class="gesture-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M26 10v20M34 12v18M42 16v16M18 18v14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 34c0-4-3-7-7-7H25c-4 0-7 3-7 7v10c0 7 6 13 13 13h2c7 0 13-6 13-13z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M54 42h8m0 0-4-4m4 4-4 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="gesture-copy">
+          <span class="gesture-kicker">MANO IZQUIERDA</span>
+          <strong>Barrido <em>→</em></strong>
+          <p>De izquierda a derecha. Gira el cubo a la izquierda.</p>
+        </div>
+        <i class="state-dot"></i>
+      </article>
+
+      <article class="gesture-card" id="g-fist" data-hand="Right" data-action="spin_start">
+        <div class="gesture-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M20 30v-8a5 5 0 0 1 10 0v6M30 28v-9a5 5 0 0 1 10 0v9M40 29v-7a5 5 0 0 1 10 0v10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M18 31c0-3 2-5 5-5h22c3 0 5 2 5 5v11c0 8-6 14-14 14h-4c-8 0-14-6-14-14z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M12 26c-2 3-3 6-3 10s1 7 3 10M52 26c2 3 3 6 3 10s-1 7-3 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".7"/></svg>
+        </div>
+        <div class="gesture-copy">
+          <span class="gesture-kicker">PUÑO DERECHO</span>
+          <strong>Puño cerrado</strong>
+          <p>Inicia el giro continuo del cubo.</p>
+        </div>
+        <i class="state-dot"></i>
+      </article>
+
+      <article class="gesture-card" id="g-palm" data-hand="Any" data-action="spin_stop">
+        <div class="gesture-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M22 34V16a4 4 0 0 1 8 0v14M30 30V12a4 4 0 0 1 8 0v18M38 30V16a4 4 0 0 1 8 0v16M46 32v-8a4 4 0 0 1 8 0v16c0 10-8 18-18 18h-2c-8 0-14-4-18-11l-6-10a4 4 0 0 1 7-4l5 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="gesture-copy">
+          <span class="gesture-kicker">PALMA ABIERTA</span>
+          <strong>Mano extendida</strong>
+          <p>Detiene el giro y deja el cubo quieto.</p>
+        </div>
+        <i class="state-dot"></i>
+      </article>
+
+      <div class="panel-note">
+        <span class="live-dot"></span>
+        Análisis local con MediaPipe. Nada sale de la placa.
+      </div>
+    </aside>
+
+    <section class="stage-wrap">
+      <div class="stage" id="stage">
+        <div class="stage-grid" aria-hidden="true"></div>
+        <div class="corner tl" aria-hidden="true"></div>
+        <div class="corner tr" aria-hidden="true"></div>
+        <div class="corner bl" aria-hidden="true"></div>
+        <div class="corner br" aria-hidden="true"></div>
+        <div class="scanline" aria-hidden="true"></div>
+
+        <div class="stage-label" id="stage-label">ACERCÁ LA MANO</div>
+
+        <div class="cube-scene" id="cube-scene">
+          <div class="cube-shadow" aria-hidden="true"></div>
+          <div class="cube" id="cube" aria-hidden="true"></div>
+        </div>
+
+        <div class="stage-hud">
+          <div><span>MANOS</span><b id="hand-count">0</b></div>
+          <div><span>GESTO</span><b id="current-gesture">—</b></div>
+          <div><span>MODO</span><b>OFFLINE</b></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel camera-panel">
+      <div class="panel-head">
+        <span>CÁMARA USB</span>
+        <small id="camera-name">buscando...</small>
+      </div>
+
+      <div class="camera-frame">
+        <img id="video" src="/video" alt="Vista de la cámara USB">
+        <canvas id="landmark-canvas" class="landmark-canvas" width="640" height="480"></canvas>
+        <div class="camera-fallback" id="camera-fallback">
+          <strong>SIN SEÑAL</strong>
+          <span>Conectá la cámara al hub USB-C con alimentación.</span>
+        </div>
+        <div class="camera-overlay">
+          <span class="live-badge"><i></i> LIVE</span>
+          <span id="camera-hands">0 manos</span>
+        </div>
+      </div>
+
+      <div class="event-log">
+        <div class="panel-head compact">
+          <span>ÚLTIMO GESTO</span>
+          <small id="event-time">—</small>
+        </div>
+        <div class="event-list" id="event-list">
+          <div class="event-empty">Esperando un gesto...</div>
+        </div>
+      </div>
+
+      <div class="camera-meta">
+        <div><span>RESOLUCIÓN</span><b id="meta-res">640 × 480</b></div>
+        <div><span>INFERENCIA</span><b>LOCAL</b></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="bottombar">
+    <div class="demo-controls" aria-label="Pruebas manuales">
+      <span>PROBAR:</span>
+      <button data-demo="right_swipe_left">← der.</button>
+      <button data-demo="left_swipe_right">izq. →</button>
+      <button data-demo="right_fist">puño</button>
+      <button data-demo="open_palm">palma</button>
+      <button data-demo="reset" class="ghost">reset</button>
+    </div>
+    <div class="hint">Mano derecha ← · Mano izquierda → · Puño derecho · Palma abierta</div>
+    <button id="fullscreen" class="fullscreen" type="button">PANTALLA COMPLETA</button>
+  </footer>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>
