@@ -258,7 +258,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
   .section{padding:72px 0}
 }
 </style>
-</head>
+<link rel="stylesheet" href="assets/community.css?v=5"></head>
 <body style="--accent:#7CFF6B;--accent2:#22D3EE">
 <div class="grid-overlay"></div>
 <div class="glow one"></div>
@@ -275,6 +275,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
       <a href="#como">Cómo funciona</a>
       <a href="#arquitectura">Arquitectura</a>
       <a href="#docs">Documentación</a>
+      <a href="#comunidad">Comunidad</a>
       <a class="btn btn-ghost" style="padding:9px 15px" href="https://github.com/wanderc137/GestureCubeUNOQ" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </div>
@@ -392,8 +393,8 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
   <div class="wrap">
     <div class="cta-card reveal">
       <div class="kicker" style="justify-content:center">Portfolio · Arduino UNO Q</div>
-      <h2>¿Construimos algo así?</h2>
-      <p>Si tenés un evento, una feria o un espacio interactivo y querés una experiencia de visión que no dependa de la nube, este proyecto es una base lista para adaptar.</p>
+      <h2>¿Te animás?</h2>
+      <p>Usá esto como base y referencia para construir una interfaz gestual en el navegador con MediaPipe y un cubo 3D. Este proyecto es la prueba de que se puede hacer con componentes reales.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://github.com/wanderc137" target="_blank" rel="noopener">Ver más proyectos <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-ghost" href="https://github.com/wanderc137/GestureCubeUNOQ" target="_blank" rel="noopener">Explorar el código</a>
@@ -445,5 +446,8 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 })();
 </script>
+
+<script>window.PORTFOLIO_COMMUNITY = {"account": "wanderc137", "repo": "GestureCubeUNOQ", "coinNamespace": "wanderc137-gesturecubeunoq-coins-v1", "faqs": [{"q": "¿Dónde corre MediaPipe?", "a": "En el navegador, con MediaPipe Tasks Vision (WASM/WebGL); el servidor solo sirve la página y el stream MJPEG."}, {"q": "¿Cuántos gestos reconoce?", "a": "Cuatro gestos y <b>21 landmarks</b> de la mano; el motor convierte posiciones en rotaciones del cubo 3D."}, {"q": "¿El video se envía a Internet?", "a": "No. El stream MJPEG es local y la inferencia ocurre en el navegador; no se suben frames."}, {"q": "¿Qué cámara usa?", "a": "La unidad no detectó una cámara USB por el único USB-C ocupado; se puede usar una cámara IP o un hub con PD."}, {"q": "¿Qué rendimiento tiene?", "a": "Alrededor de <b>15 fps</b> de MJPEG; la inferencia depende del navegador y de la GPU integrada."}]};</script>
+<script src="assets/community.js?v=5" defer></script>
 </body>
 </html>
