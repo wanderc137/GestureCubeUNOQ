@@ -683,6 +683,57 @@ Probar la URL en VLC/navegador; verificar ruta desde la placa y que sea MJPEG po
 
 La lista comentada, con utilidad y archivo relacionado, está en [`docs/REFERENCES.md`](docs/REFERENCES.md).
 
+## Ficha de evaluación
+
+**Madurez global: 4.0/5**
+
+| Criterio | Nota | Evidencia |
+|---|---:|---|
+| Madurez | 3/5 | Servicio systemd activo en 8091 e inferencia web completa, pero la cámara nunca se validó, así que el camino gesto-mano-cubo no está probado en vivo. |
+| Reproducibilidad | 4/5 | Assets vendorizados (static/ ~37 MB, .pylibs/ ~55 MB), instalador systemd y comandos de verificación; depende de copiar los assets y del modelo .task. |
+| Documentación | 5/5 | README, datasheet, developer y bitácora con 13 problemas, umbrales de gesto y captura real del estado SIN SEÑAL. |
+| Honestidad de límites | 5/5 | Declara que la cámara no funciona, que el cubo no resuelve piezas y que el motor Python no corre en la placa. |
+| Valor demostrativo | 3/5 | El cubo CSS y el motor de gestos se pueden probar con botones, pero falta la demostración de punta a punta con cámara y mano. |
+| Facilidad de despliegue | 4/5 | Usa stdlib y systemd, sin framework ni build; requiere copiar .pylibs y resolver el host USB o apuntar a una cámara IP. |
+
+Sirve como base reutilizable para instalaciones con gestos y para estudiar el reparto de cómputo entre placa y navegador. La limitación que más pesa es que la cámara no está validada, de modo que la experiencia completa queda demostrada solo en teoría.
+
+## Lo que no funcionó
+
+### Etapa 1 · inferencia nativa — MediaPipe abortaba con SIGILL
+
+El QRB2210 es un Cortex-A53 ARMv8.0 sin extensión LSE, y los wheels aarch64 de MediaPipe usan instrucciones atómicas LSE que matan el proceso al primer uso. Se descartó la inferencia nativa y se movió a Tasks Vision WASM/WebGL en el navegador, dejando el motor Python solo como referencia.
+
+### Etapa 1 · dependencias — Sin wheels para Python 3.13 en aarch64
+
+MediaPipe 0.10.x no publicaba wheels cp313 aarch64 y las 1.x fallaban por LSE; compilar desde fuente se evaluó y se descartó por costo de build y mantenimiento. La solución fue no depender de MediaPipe en la placa.
+
+### Etapa 3 · hardware — Cámara bloqueada por el único USB-C
+
+El puerto USB-C está ocupado por el cable de datos en modo dispositivo, así que la placa no puede hostear ni alimentar una cámara UVC y no aparece /dev/video. Se agregó entrada MJPEG por IP y se documentó el hub USB-C con PD; la cámara sigue sin validar y el panel usa un placeholder.
+
+### Etapa 4 · interfaz — Mano izquierda y derecha invertidas
+
+El servidor espeja la imagen para que el gesto se sienta natural, pero MediaPipe etiqueta Left/Right sobre la imagen ya espejada y los barridos se interpretaban al revés. Se corrigió con MIRROR_HANDEDNESS=true en app.js, que intercambia las etiquetas antes de aplicar la regla.
+
+## Preguntas típicas
+
+**¿Qué es?**
+
+Un servidor liviano en la UNO Q que publica video MJPEG y una página con un cubo Rubik CSS 3D. El navegador detecta manos con MediaPipe y convierte barridos, puño y palma en giros del cubo, sin instalar software en el cliente.
+
+**¿La cámara funciona?**
+
+No en el hardware actual: el único USB-C está ocupado en modo dispositivo y no hay /dev/video, por eso el panel muestra SIN SEÑAL. Se puede usar una cámara IP con --camera http://IP:8080/video o un hub USB-C con PD, pero esa variante no está validada.
+
+**¿Cómo se ejecuta?**
+
+Se copia el proyecto a la placa, se instalan .pylibs y los assets, se configura camera.env y se ejecuta python3 server.py o se instala el servicio gesturecube. La UI queda en http://IP:8091 y los botones permiten probar el cubo sin cámara.
+
+**¿Qué se puede reutilizar?**
+
+El servidor MJPEG con http.server, las reglas geométricas de gestos en JS, el cubo CSS con su modelo de 26 cubies y el patrón de servicio systemd. También la lista de verificación de MediaPipe en ARMv8.0 sin LSE.
+
 ## Licencia y autor
 
 **MIT License** © 2026 **Jose Manuel Adasme**. Ver [`LICENSE`](LICENSE).
