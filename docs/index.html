@@ -291,7 +291,8 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
 @media(max-width:760px){.concept-grid,.fail-grid{grid-template-columns:1fr}.concept-side{border-left:0;padding-left:0}}
 
 </style>
-<link href="assets/community.css?v=5" rel="stylesheet"/></head>
+<link href="assets/community.css?v=5" rel="stylesheet"/><link href="rec/player.css?v=1" rel="stylesheet"/>
+</head>
 <body style="--accent:#7CFF6B;--accent2:#22D3EE">
 <div class="grid-overlay"></div>
 <div class="glow one"></div>
@@ -306,6 +307,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
 <a href="#problema">Visión</a>
 <a href="#como">Cómo funciona</a>
 <a href="#arquitectura">Arquitectura</a>
+<a href="#video">Video</a>
 <a href="#docs">Documentación</a>
 <a href="#comunidad">Comunidad</a>
 <a class="btn btn-ghost" href="https://github.com/wanderc137/GestureCubeUNOQ" rel="noopener" style="padding:9px 15px" target="_blank">GitHub</a>
@@ -355,6 +357,45 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
 <div class="timeline reveal"><div class="step"><div class="step-num">01</div><div class="step-body"><h3>La placa captura</h3><p>OpenCV lee la cámara USB (o una cámara IP) y publica JPEG 640×480.</p></div></div><div class="step"><div class="step-num">02</div><div class="step-body"><h3>MJPEG a la LAN</h3><p>El navegador consume /video sin plugins ni instalaciones.</p></div></div><div class="step"><div class="step-num">03</div><div class="step-body"><h3>MediaPipe en el cliente</h3><p>21 landmarks de la mano con WASM/WebGL; el modelo se carga desde la propia placa.</p></div></div><div class="step"><div class="step-num">04</div><div class="step-body"><h3>Motor de gestos</h3><p>Cuatro reglas con histéresis mueven el cubo; los botones permiten probar sin cámara.</p></div></div><div class="step"><div class="step-num">05</div><div class="step-body"><h3>Cubo CSS 3D</h3><p>Volumen real, animaciones y un panel de feria con radar y tarjetas de estado.</p></div></div></div>
 </div>
 </section>
+
+<section class="section tight rec-section" id="video" style="--accent:#2E7DFF;--accent2:#14F195">
+<div class="wrap">
+<div class="rec-kicker">REC · VIDEO · 3:05</div>
+<h2 class="rec-h2">GestureCube · un cubo que gira con la mano</h2>
+<p class="rec-lead">Un cubo Rubik 3D en CSS que responde a gestos de la mano, con la inferencia corriendo en el navegador y la placa solo sirviendo video.</p>
+<div class="rec-banner">
+<span class="rec-banner-icon">📋</span>
+<strong>Puedes copiar y pegar los comandos del video desde el video !!!</strong>
+<span>Pausá, seleccioná el texto de la terminal y copiá.</span>
+</div>
+<div class="rec-shell">
+<div class="rec-bar"><i></i><i></i><i></i><span class="rec-title">GestureCube · un cubo que gira con la mano · asciinema</span><span class="rec-rec"><b></b>REC</span></div>
+<div class="rec-screen-wrap">
+<div class="rec-screen" id="rec-screen"></div>
+<div class="rec-poster" id="rec-poster">
+<div class="rec-kicker">ASCIINEMA · 3:05</div>
+<h3>GestureCube · un cubo que gira con la mano</h3>
+<p>Un cubo Rubik 3D en CSS que responde a gestos de la mano, con la inferencia corriendo en el navegador y la placa solo sirviendo video.</p>
+<div class="rec-poster-meta">GestureCubeUNOQ · código real</div>
+<button class="rec-btn rec-primary" id="rec-start" type="button">▶ Reproducir</button>
+</div>
+</div>
+<div class="rec-controls">
+<button class="rec-btn rec-primary" id="rec-play" type="button">▶ Reproducir</button>
+<button class="rec-btn" id="rec-restart" type="button">↺ Reiniciar</button>
+<input class="rec-progress" id="rec-range" type="range" min="0" max="1000" value="0" aria-label="Progreso"/>
+<span class="rec-time" id="rec-time">0:00 / 3:05</span>
+<select class="rec-speed" id="rec-speed" aria-label="Velocidad"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+<button class="rec-btn" id="rec-full" type="button" title="Pantalla completa">⛶</button>
+<button class="rec-btn" id="rec-copy" type="button">⧉ Copiar comandos</button>
+<a class="rec-download" href="rec/GestureCubeUNOQ.cast" download>descargar .cast</a>
+</div>
+</div>
+<p class="rec-note">Guion basado en el código y la documentación del repo; el software está validado, pero la cámara USB sigue pendiente por el único puerto USB-C ocupado.</p>
+<div class="rec-chapters"><span class="rec-chip"><b>0:06</b> EL PROBLEMA</span><span class="rec-chip"><b>0:21</b> ARQUITECTURA</span><span class="rec-chip"><b>0:38</b> HARDWARE</span><span class="rec-chip"><b>0:54</b> EL NÚCLEO</span><span class="rec-chip"><b>1:09</b> EL NÚCLEO</span><span class="rec-chip"><b>1:23</b> VISIÓN</span><span class="rec-chip"><b>1:39</b> GESTOS</span><span class="rec-chip"><b>1:55</b> GESTOS</span><span class="rec-chip"><b>2:11</b> GESTOS</span><span class="rec-chip"><b>2:26</b> EL CUBO</span><span class="rec-chip"><b>2:41</b> CÓMO EJECUTARLO</span></div>
+</div>
+</section>
+
 <section class="section tight" id="arquitectura">
 <div class="wrap">
 <div class="section-head reveal">
@@ -468,5 +509,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
 </script>
 <script>window.PORTFOLIO_COMMUNITY = {"account": "wanderc137", "repo": "GestureCubeUNOQ", "coinNamespace": "wanderc137-gesturecubeunoq-coins-v1", "faqs": [{"q": "¿Dónde corre MediaPipe?", "a": "En el navegador, con MediaPipe Tasks Vision (WASM/WebGL); el servidor solo sirve la página y el stream MJPEG."}, {"q": "¿Cuántos gestos reconoce?", "a": "Cuatro gestos y <b>21 landmarks</b> de la mano; el motor convierte posiciones en rotaciones del cubo 3D."}, {"q": "¿El video se envía a Internet?", "a": "No. El stream MJPEG es local y la inferencia ocurre en el navegador; no se suben frames."}, {"q": "¿Qué cámara usa?", "a": "La unidad no detectó una cámara USB por el único USB-C ocupado; se puede usar una cámara IP o un hub con PD."}, {"q": "¿Qué rendimiento tiene?", "a": "Alrededor de <b>15 fps</b> de MJPEG; la inferencia depende del navegador y de la GPU integrada."}]};</script>
 <script defer="" src="assets/community.js?v=6"></script>
+<script defer src="rec/GestureCubeUNOQ.cast.js?v=1"></script>
+<script defer src="rec/player.js?v=1"></script>
 </body>
 </html>
